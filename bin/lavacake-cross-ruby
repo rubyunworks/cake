@@ -1,0 +1,4 @@
+#!/usr/bin/env ruby
+require 'lavacake'
+LavaCake::Command::CrossRuby.run
+
