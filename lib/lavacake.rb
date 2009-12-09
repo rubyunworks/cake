@@ -3,7 +3,6 @@ module LavaCake
 end
 
 require 'lavacake/session'
-require 'lavacake/compiler'
 require 'lavacake/rubycompiler'
 require 'lavacake/compilers/c'
 #require 'lavacake/compilers/java'
