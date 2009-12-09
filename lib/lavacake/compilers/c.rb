@@ -1,6 +1,6 @@
 #!/usr/bin/env ruby
 
-require 'lavacake/compiler'
+require 'lavacake/compilers/abstract'
 
 module LavaCake
 module C

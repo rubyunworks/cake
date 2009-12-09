@@ -1,6 +1,6 @@
 #!/usr/bin/env ruby
 
-require 'compiler/base_compiler'
+require 'lavacake/compilers/abstract'
 
 module Compiler
 
