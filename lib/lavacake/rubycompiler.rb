@@ -9,6 +9,11 @@
 # http://github.com/jbarnette/johnson/tree/master/cross-compile.txt
 # http://eigenclass.org/hiki/cross+compiling+rcovrt
 #
+# Information on where to store cross-compiled files:
+#
+# http://fedoraproject.org/wiki/Packaging_Cross_Compiling_Toolchains
+# http://wiki.njh.eu/Cross_Compiling_for_Win32
+#
 # This recipe only cleanup the dependency chain and automate it.
 # Also opens the door to usage different ruby versions 
 # for cross-compilation.
@@ -122,7 +127,7 @@ module LavaCake
         if xdg = ENV['XDG_LOCAL_HOME']
           File.expand_path(File.join(xdg)) #, 'lavacake'))
         else
-          File.expand_path('~/.local') #/lavacake
+          File.expand_path("~/.local/#{target}/#{ruby_cc_version}")
         end
       )
     end
@@ -162,7 +167,12 @@ module LavaCake
       @config_options ||= []
     end
 
-    # Use MinGW helper to find the proper host
+    # TODO: Sure this isn't supposed to be "i586-mingw32msvc" ?
+    def target
+      @target ||= "i386-mingw32"
+    end
+
+    # Use MinGW helper to find the proper host.
     def mingw_host
       @mingw_host ||= MinGW.mingw_host
     end
@@ -283,7 +293,7 @@ module LavaCake
       mkdir_p(blddir) unless File.exist?(blddir)
 
       options = [
-        '--target=i386-mingw32',
+        "--target=#{target}",
         "--host=#{mingw_host}",
         '--build=i686-linux',
         '--enable-shared',
