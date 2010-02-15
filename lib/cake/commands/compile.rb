@@ -1,6 +1,6 @@
-require 'lavacake/session'
+require 'cake/session'
 
-module LavaCake
+module Cake
 module Command
 
   #

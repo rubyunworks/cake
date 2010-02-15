@@ -1,7 +1,7 @@
-require 'lavacake/rubycompiler'
+require 'cake/rubycompiler'
 require 'optparse'
 
-module LavaCake
+module Cake
 module Command
 
   #

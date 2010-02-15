@@ -1,12 +1,11 @@
-#!/usr/bin/env ruby
-
-require 'lavacake/compilers/abstract'
+require 'cake/compilers/abstract'
 
 module Compiler
+module Java
 
   # FIXME: get rid of rake
 
-  class JavaCompiler < Abstract::Compiler
+  class Compiler < Abstract::Compiler
 
     attr_accessor :classpath
     attr_accessor :debug
@@ -223,3 +222,5 @@ execute the Rake compilation task using the JRuby interpreter.
 
   end
 end
+end
+

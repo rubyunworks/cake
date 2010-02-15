@@ -1,12 +1,10 @@
-#!/usr/bin/env ruby
-
 require 'rbconfig'
 require 'yaml'
 require 'pathname'
 
 require 'facets/filelist' # maybe Path::List or copy here
 
-module LavaCake
+module Cake
 module Abstract
 
   # 

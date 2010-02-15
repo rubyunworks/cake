@@ -1,5 +1,5 @@
-= Lavacake
+= Cake
 
-Lavacake it the codename for a project to convert rake-compiler into a stand-alone application.
-
+Cake (formerly LavaCake) is the name for a project to convert rake-compiler 
+into a stand-alone application independent of Rake.
 

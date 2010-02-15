@@ -1,8 +1,6 @@
-#!/usr/bin/env ruby
+require 'cake/compilers/abstract'
 
-require 'lavacake/compilers/abstract'
-
-module LavaCake
+module Cake
 module C
 
   # C Compiler
@@ -18,26 +16,21 @@ module C
 
     attr_accessor :platform
 
-    attr_accessor :config_script
-
     attr_accessor :source_pattern
 
-    attr_accessor :cross_config_options
+    attr_accessor :config_script
+
+    attr_accessor :config_options
 
     #
     def initialize(location, options, &block)
       @config_script  = 'extconf.rb'
       @source_pattern = SOURCE_PATTERN
-      @cross_config_options = []
+      @config_options = []
 
       super(location, options, &block)
 
       @cross_compile = (@platform != RUBY_PLATFORM)
-    end
-
-    #
-    def settings
-
     end
 
     # FIXME: cleanup and clobbering
@@ -130,9 +123,9 @@ module C
       #if t.prerequisites.include?("#{tmp_path}/rbconfig.rb") then
       #  options.push(*@cross_config_options)
       #end
-      if cross_compile?
-        options.push(*@cross_config_options)
-      end
+      #if cross_compile?
+      #  options.push(*@cross_config_options)
+      #end
 
       # add options to command
       cmd.push(*options)
@@ -147,12 +140,17 @@ module C
 
     #
     def config_path
-      @config_path ||= File.expand_path("~/.rake-compiler/config.yml")
+      @config_path ||= (
+        cfg = ENV['XDG_CONFIG_HOME'] || '~/.config'
+        dir = File.join(cfg, 'lavacake', 'config.yml')
+        File.expand_path(dir)
+        #File.expand_path("~/.rake-compiler/config.yml")
+      )
     end
 
     #
     def config_file
-      config_file = YAML.load_file(config_path)
+      config_file = YAML.load(File.new(config_path))
     end
 
     # tmp_path

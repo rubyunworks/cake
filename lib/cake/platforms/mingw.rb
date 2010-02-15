@@ -1,6 +1,4 @@
-#!/usr/bin/env ruby
-
-module LavaCake
+module Cake
 
   # HACK: Lousy API design, sue me. At least works ;-)
   #

@@ -23,7 +23,7 @@ require 'fileutils'
 #require 'lavacake/session'
 require 'lavacake/platforms/mingw'
 
-module LavaCake
+module Cake
 
   # This class is used to compile different versions of Ruby
   # suitable for use as cross-compilers.

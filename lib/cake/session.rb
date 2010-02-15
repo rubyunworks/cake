@@ -1,4 +1,4 @@
-module LavaCake
+module Cake
 
   #
   #
